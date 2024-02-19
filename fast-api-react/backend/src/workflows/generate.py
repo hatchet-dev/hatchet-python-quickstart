@@ -8,39 +8,6 @@ import time
 openai = OpenAI()
 
 
-@hatchet.workflow(on_events=["trigger:create"])
-class ManualTriggerWorkflow:
-    @hatchet.step()
-    def step1(self, context):
-        messages = context.workflow_input()['request']['messages']
-        print("> starting step1", messages)
-        return {"status": "thinking"}
-
-    @hatchet.step(parents=["step1"])
-    def step2(self, context):
-        print("starting step2")
-        return {"status": "writing a response"}
-
-    @hatchet.step(parents=["step2"], timeout='5m')
-    def step3(self, context):
-        messages = context.workflow_input()['request']['messages']
-        prompt = "Compose a poem that explains the concept of recursion in programming."
-        model = "gpt-3.5-turbo"
-
-        completion = openai.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": prompt},
-            ] + messages
-        )
-
-        return {
-            "complete": "true",
-            "status": "idle",
-            "message": completion.choices[0].message.content,
-        }
-
-
 @hatchet.workflow(on_events=["question:create"])
 class GenerateWorkflow:
 
