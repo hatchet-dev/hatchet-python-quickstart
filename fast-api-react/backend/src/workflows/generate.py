@@ -46,7 +46,7 @@ class GenerateWorkflow:
 
         prompt = prompt.format(message=message['content'], docs=docs)
 
-        model = ctx.overrides("gpt-3.5-turbo")
+        model = ctx.overrides("model", "gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,
@@ -74,7 +74,7 @@ class GenerateWorkflow:
 
         prompt = prompt.format(research=research)
 
-        model = ctx.overrides("gpt-3.5-turbo")
+        model = ctx.overrides("model", "gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,

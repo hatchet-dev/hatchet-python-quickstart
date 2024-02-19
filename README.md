@@ -4,17 +4,13 @@ The following is a template repo to get started with the Hatchet Python SDK. It 
 
 ### Cloud Version
 
-Navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then set the following environment variables:
+Navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
 
 ```
 HATCHET_CLIENT_TOKEN="<token>"
 ```
 
-Then start a worker via:
-
-```
-poetry run python worker.py
-```
+You will need this in the examples.
 
 **Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
 
@@ -33,11 +29,13 @@ Email: admin@example.com
 Password: Admin123!!
 ```
 
-Next, navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then set the following environment variables:
+Next, navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
 
 ```
 HATCHET_CLIENT_TOKEN="<token>"
 ```
+
+You will need this in the examples.
 
 **Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
 

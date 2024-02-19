@@ -13,9 +13,9 @@ Before running this project, make sure you have the following:
 
 ## Setup
 
-1. Create a `.env` file in the project root directory and set the required environment variables.
+1. Create a `.env` file in the `./backend` directory and set the required environment variables.
 
-This project requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started Readme](/README.md).
+This project requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](/README.md).
 
 You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
 
@@ -48,6 +48,6 @@ poetry run hatchet
 We've included a basic chat engine frontend to play with the example workflow. To run this script:
 
 1. Open a new terminal window and cd into the `fast-api-react/frontend` directory.
-2. run `npx install`
-3. run `npx start`
+2. run `npm install`
+3. run `npm start`
 4. By default you can access the application in your browser at `http://localhost:3000` or by following the instructions in the terminal window.
