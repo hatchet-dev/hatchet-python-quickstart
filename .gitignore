@@ -1,0 +1,17 @@
+# Python
+.venv
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.ipynb_checkpoints/
+
+# TypeScript React
+node_modules/
+dist/
+build/
+
+.DS_Store
