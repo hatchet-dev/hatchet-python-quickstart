@@ -3,4 +3,4 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-hatchet = Hatchet()
+hatchet = Hatchet(debug=True)

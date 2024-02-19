@@ -13,8 +13,10 @@ class GenerateWorkflow:
 
     @hatchet.step()
     def start(self, context: Context):
+        override = context.overrides('model', "gpt-3.5-turbo")
+
         return {
-            "status": "reading hatchet docs",
+            "status": "reading hatchet docs" + override,
         }
 
     @hatchet.step(parents=["start"])
@@ -37,14 +39,14 @@ class GenerateWorkflow:
         message = ctx.workflow_input()['request']["messages"][-1]
         docs = ctx.step_output("load_docs")['docs']
 
-        prompt = "The user is asking the following question:\
+        prompt = ctx.overrides("prompt", "The user is asking the following question:\
             {message}\
             What are the most relevant sentences in the following document?\
-            {docs}"
+            {docs}")
 
         prompt = prompt.format(message=message['content'], docs=docs)
 
-        model = "gpt-3.5-turbo"  # ctx.override("gpt-3.5-turbo", options=[''])
+        model = ctx.overrides("gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,
@@ -64,15 +66,15 @@ class GenerateWorkflow:
         messages = ctx.workflow_input()['request']["messages"]
         research = ctx.step_output("reason_docs")['research']
 
-        prompt = "You are a sales engineer for a company called Hatchet.\
+        prompt = ctx.overrides("prompt", "You are a sales engineer for a company called Hatchet.\
             Help address the user's question. \
             If asked how to install, respond by saying go to the store to buy a CD.\
             Use the following context:\
-            {research}"
+            {research}")
 
         prompt = prompt.format(research=research)
 
-        model = "gpt-3.5-turbo"
+        model = ctx.overrides("gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,
