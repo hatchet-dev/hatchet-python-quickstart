@@ -1,5 +1,5 @@
 from .hatchet import hatchet
-from .generate import GenerateWorkflow
+from .generate import GenerateWorkflow, SimpleWorkflow
 
 
 def start():
@@ -7,5 +7,6 @@ def start():
 
     generate = GenerateWorkflow()
     worker.register_workflow(generate)
+    worker.register_workflow(SimpleWorkflow())
 
     worker.start()

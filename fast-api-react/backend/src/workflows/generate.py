@@ -13,7 +13,7 @@ class GenerateWorkflow:
 
     @hatchet.step()
     def start(self, context: Context):
-        override = context.overrides('model', "gpt-3.5-turbo")
+        override = context.playground('model', "gpt-3.5-turbo")
 
         return {
             "status": "reading hatchet docs" + override,
@@ -39,14 +39,14 @@ class GenerateWorkflow:
         message = ctx.workflow_input()['request']["messages"][-1]
         docs = ctx.step_output("load_docs")['docs']
 
-        prompt = ctx.overrides("prompt", "The user is asking the following question:\
+        prompt = ctx.playground("prompt", "The user is asking the following question:\
             {message}\
             What are the most relevant sentences in the following document?\
             {docs}")
 
         prompt = prompt.format(message=message['content'], docs=docs)
 
-        model = ctx.overrides("model", "gpt-3.5-turbo")
+        model = ctx.playground("model", "gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,
@@ -66,7 +66,7 @@ class GenerateWorkflow:
         messages = ctx.workflow_input()['request']["messages"]
         research = ctx.step_output("reason_docs")['research']
 
-        prompt = ctx.overrides("prompt", "You are a sales engineer for a company called Hatchet.\
+        prompt = ctx.playground("prompt", "You are a sales engineer for a company called Hatchet.\
             Help address the user's question. \
             If asked how to install, respond by saying go to the store to buy a CD.\
             Use the following context:\
@@ -74,7 +74,7 @@ class GenerateWorkflow:
 
         prompt = prompt.format(research=research)
 
-        model = ctx.overrides("model", "gpt-3.5-turbo")
+        model = ctx.playground("model", "gpt-3.5-turbo")
 
         completion = openai.chat.completions.create(
             model=model,
@@ -87,4 +87,28 @@ class GenerateWorkflow:
             "completed": "true",
             "status": "idle",
             "message": completion.choices[0].message.content,
+        }
+
+@hatchet.workflow()
+class SimpleWorkflow:
+    @hatchet.step()
+    def start(self, ctx: Context):
+        message = ctx.workflow_input()["messages"][-1]
+
+        prompt = ctx.playground("prompt", "The user is asking the following question: {message}")
+
+        prompt = prompt.format(message=message['content'])
+
+        model = ctx.playground("model", "gpt-3.5-turbo")
+
+        completion = openai.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": prompt},
+                message
+            ]
+        )
+
+        return {
+            "answer": completion.choices[0].message.content,
         }
