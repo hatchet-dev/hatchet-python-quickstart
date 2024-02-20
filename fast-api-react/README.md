@@ -8,16 +8,17 @@ Before running this project, make sure you have the following:
 
 1. Python 3.7 or higher installed on your machine.
 2. Poetry package manager installed. You can install it by running `pip install poetry`, or by following instructions in the [Poetry Docs](https://python-poetry.org/docs/#installation)
-3. Clone this repository to your local machine.
-4. (Optional) If you would like to run the example frontend, Node which can be installed from the [node website](https://nodejs.org/en/download)
+3. (Optional) If you would like to run the example frontend, Node which can be installed from the [node website](https://nodejs.org/en/download)
 
 ## Setup
 
-1. Create a `.env` file in the `./backend` directory and set the required environment variables.
+1. Create a `.env` file in the `./backend` directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](/README.md). You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
 
-This project requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](/README.md).
-
-You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
+```
+HATCHET_CLIENT_TLS_STRATEGY=none
+HATCHET_CLIENT_TOKEN="<token>"
+OPENAI_API_KEY="<openai-key>"
+```
 
 2. Open a terminal and navigate to the project root directory (`/fast-api-react`).
 

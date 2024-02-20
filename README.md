@@ -73,9 +73,9 @@ This is the initial data that triggers the workflow. You can modify this to test
 
 These are the outputs from preceding steps in the workflow. You can view and modify these to understand how data flows through and affects subsequent steps.
 
-###### Overrides
+###### Playground
 
-Within each step of your workflow, there is a `context` parameter. This parameter features a unique method called `overrides`, which accepts two arguments: a name (as a string) and a value (which must be a primitive data type). This functionality is designed to dynamically adjust certain aspects of your workflow on the fly. When you execute a step in the Playground, Hatchet recognizes any `overrides` you've implemented, enabling you to modify them directly. This flexibility is especially useful for fine-tuning specific parameters, such as adjusting prompt instructions or other configurations.
+Within each step of your workflow, there is a `context` parameter. This parameter features a unique method called `playground`, which accepts two arguments: a name (as a string) and a value (which must be a primitive data type). This functionality is designed to dynamically adjust certain aspects of your workflow on the fly. When you execute a step in the Playground, Hatchet recognizes any `playground` you've implemented, enabling you to modify them directly. This flexibility is especially useful for fine-tuning specific parameters, such as adjusting prompt instructions or other configurations.
 
 ###### Debugging
 
