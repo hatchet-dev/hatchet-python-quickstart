@@ -383,13 +383,13 @@ files = [
 
 [[package]]
 name = "hatchet-sdk"
-version = "0.10.0"
+version = "0.10.1"
 description = ""
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "hatchet_sdk-0.10.0-py3-none-any.whl", hash = "sha256:acfe9db139b912fb617ec561bc215574b493101c61cf41e65ae38f08f5ffb033"},
-    {file = "hatchet_sdk-0.10.0.tar.gz", hash = "sha256:1776eb80dd1753676662698f8c439a47c9ef07148550614fbfa84dd109943826"},
+    {file = "hatchet_sdk-0.10.1-py3-none-any.whl", hash = "sha256:2de7ff8ae85287b84203c31bc9ed42e7e0b8147ff75ba260723e4b81e8bbd746"},
+    {file = "hatchet_sdk-0.10.1.tar.gz", hash = "sha256:0d1c428f98d3172147a020833c4947fe762ead4e636435491a318368084af130"},
 ]
 
 [package.dependencies]
@@ -714,7 +714,6 @@ files = [
     {file = "PyYAML-6.0.1-cp311-cp311-win_amd64.whl", hash = "sha256:bf07ee2fef7014951eeb99f56f39c9bb4af143d8aa3c21b1677805985307da34"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:855fb52b0dc35af121542a76b9a84f8d1cd886ea97c84703eaa6d88e37a2ad28"},
     {file = "PyYAML-6.0.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:40df9b996c2b73138957fe23a16a4f0ba614f4c0efce1e9406a184b6d07fa3a9"},
-    {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:a08c6f0fe150303c1c6b71ebcd7213c2858041a7e01975da3a99aed1e7a378ef"},
     {file = "PyYAML-6.0.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6c22bec3fbe2524cde73d7ada88f6566758a8f7227bfbf93a408a9d86bcc12a0"},
     {file = "PyYAML-6.0.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8d4e9c88387b0f5c7d5f281e55304de64cf7f9c0021a3525bd3b1c542da3b0e4"},
     {file = "PyYAML-6.0.1-cp312-cp312-win32.whl", hash = "sha256:d483d2cdf104e7c9fa60c544d92981f12ad66a457afae824d146093b8c294c54"},
@@ -1128,4 +1127,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "ac355fd5f4b3d93655efb91535086fe7ff1df0d900c5c681d9cb127ce25f6bea"
+content-hash = "fffb688f5b0632fd5428cd0b07b49f0c4297481ecb72027e90c9568b0390b05f"
