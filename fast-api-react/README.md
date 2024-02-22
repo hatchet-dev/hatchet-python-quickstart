@@ -20,7 +20,7 @@ HATCHET_CLIENT_TOKEN="<token>"
 OPENAI_API_KEY="<openai-key>"
 ```
 
-2. Open a terminal and navigate to the project root directory (`/fast-api-react`).
+2. Open a terminal and navigate to the project backend directory (`/fast-api-react/backend`).
 
 3. Run the following command to install the project dependencies:
 
@@ -48,7 +48,7 @@ poetry run hatchet
 
 We've included a basic chat engine frontend to play with the example workflow. To run this script:
 
-1. Open a new terminal window and cd into the [`./frontend`](./frontend/) directory.
+1. Open a new terminal window and cd into the [`fast-api-react/frontend`](./frontend/) directory.
 2. run `npm install`
 3. run `npm start`
 4. By default you can access the application in your browser at `http://localhost:3000` or by following the instructions in the terminal window.
