@@ -11,11 +11,11 @@ hatchet = "src.main:start"
 [tool.poetry.dependencies]
 python = "^3.8"
 python-dotenv = "^1.0.0"
-hatchet-sdk = "^0.10.4"
 openai = "^1.12.0"
 beautifulsoup4 = "^4.12.3"
 requests = "^2.31.0"
 urllib3 = "1.26.15"
+hatchet-sdk = "0.10.5"
 
 [build-system]
 requires = ["poetry-core"]
