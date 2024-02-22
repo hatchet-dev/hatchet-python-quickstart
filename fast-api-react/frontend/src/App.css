@@ -8,7 +8,7 @@
 .App {
   width: 100%;
   max-width: 390px;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
 }

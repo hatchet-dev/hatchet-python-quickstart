@@ -4,7 +4,7 @@ import "./App.css";
 interface Messages {
   role: "user" | "assistant";
   content: string;
-  hatchetRunId?: string;
+  messageId?: string;
 }
 
 const API_URL = "http://localhost:8000";
@@ -93,14 +93,14 @@ function App() {
   return (
     <div className="App">
       <div className="Messages">
-        {messages.map(({ role, content, hatchetRunId }, i) => (
+        {messages.map(({ role, content, messageId }, i) => (
           <p key={i}>
             <b>{role === "assistant" ? "Agent" : "You"}</b>: {content}
-            {hatchetRunId && (
+            {messageId && (
               <a
                 target="_blank"
                 rel="noreferrer"
-                href={`https://app.dev.hatchet-tools.com/workflow-runs/${hatchetRunId}?tenant=707d0855-80ab-4e1f-a156-f1c4546cbf52`}
+                href={`http://localhost:8080/workflow-runs/${messageId}?tenant=707d0855-80ab-4e1f-a156-f1c4546cbf52`}
               >
                 🪓
               </a>
@@ -112,7 +112,7 @@ function App() {
           <a
             target="_blank"
             rel="noreferrer"
-            href={`https://app.dev.hatchet-tools.com/workflow-runs/${openRequest}?tenant=707d0855-80ab-4e1f-a156-f1c4546cbf52`}
+            href={`http://localhost:8080/workflow-runs/${openRequest}?tenant=707d0855-80ab-4e1f-a156-f1c4546cbf52`}
           >
             {status}
           </a>
