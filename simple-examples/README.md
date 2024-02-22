@@ -37,7 +37,7 @@ poetry run hatchet
 
 ## Triggering a workflow
 
-TODO
+Follow the instructions in the root [project setup](../README.md) to launch the playground and start workflow runs.
 
 ## Project Overview
 

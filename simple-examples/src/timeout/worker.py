@@ -1,3 +1,4 @@
+from hatchet_sdk import Context
 from ..hatchet import hatchet
 
 
@@ -5,7 +6,7 @@ from ..hatchet import hatchet
 class TimeoutWorkflow:
 
     @hatchet.step(timeout='4s')
-    def timeout(self, context):
+    def step1(self, context):
         try:
             print("started step2")
             context.sleep(5)

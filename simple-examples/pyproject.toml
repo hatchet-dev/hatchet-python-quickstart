@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "src"
 version = "0.0.0"
-description = "Easily run background tasks in FastAPI with Hatchet"
+description = "Easily run background tasks in Python with Hatchet"
 authors = []
 readme = "README.md"
 
@@ -12,8 +12,7 @@ hatchet = "src.main:start"
 python = "^3.8"
 python-dotenv = "^1.0.0"
 hatchet-sdk = "^0.10.4"
-uvicorn = {extras = ["standard"], version = "^0.27.0"}
-fastapi = "^0.109.0"
+openai = "^1.12.0"
 beautifulsoup4 = "^4.12.3"
 requests = "^2.31.0"
 urllib3 = "1.26.15"
