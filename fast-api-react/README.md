@@ -12,7 +12,7 @@ Before running this project, make sure you have the following:
 
 ## Setup
 
-1. Create a `.env` file in the `./backend` directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](/README.md). You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
+1. Create a `.env` file in the `./backend` directory and set the required environment variables. This requires the `HATCHET_CLIENT_TOKEN` variable created in the [Getting Started README](../README.md). You will also need, a `OPENAI_API_KEY` which can be created on the [OpenAI Website](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
 
 ```
 HATCHET_CLIENT_TLS_STRATEGY=none
