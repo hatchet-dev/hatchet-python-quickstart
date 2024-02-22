@@ -1,5 +1,6 @@
 from .hatchet import hatchet
 from hatchet_sdk import Context
+import openai
 
 
 @hatchet.workflow()
