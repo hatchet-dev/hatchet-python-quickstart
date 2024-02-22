@@ -33,31 +33,39 @@ app.add_middleware(
 
 @app.post("/message")
 def message(data: MessageRequest):
-
-    messageId = hatchet.client.admin.run_workflow("GenerateWorkflow", {
+    ''' This endpoint is called by the client to start a message generation workflow. '''
+    messageId = hatchet.client.admin.run_workflow("BasicRagWorkflow", {
         "request": data.model_dump()
     })
 
-    # save step message id -> workflowRunId
+    # normally, we'd save the workflowRunId to a database and return a reference to the client
+    # for this simple example, we just return the workflowRunId
 
-    return {"workflowRunId": messageId}
+    return {"messageId": messageId}
 
 
 def event_stream_generator(workflowRunId):
+    ''' This helper function is a generator that yields events from the Hatchet event stream. '''
     stream = hatchet.client.listener.stream(workflowRunId)
 
     for event in stream:
+        ''' you can filter and transform event data here that will be sent to the client'''
         data = json.dumps({
             "type": event.type,
             "payload": event.payload,
-            "workflowRunId": workflowRunId
+            "messageId": workflowRunId
         })
         yield "data: " + data + "\n\n"
 
 
-@app.get("/stream/{messageId}")
+@app.get("/message/{messageId}")
 async def stream(messageId: str):
-    # message id -> workflowRunId
+    '''
+    in a normal application you might use the message id to look up a workflowRunId
+    for this simple case, we have no persistence and just use the message id as the workflowRunId
+
+    you might also consider looking up the workflowRunId in a database and returning the results if the message has already been processed
+    '''
     workflowRunId = messageId
     return StreamingResponse(event_stream_generator(workflowRunId), media_type='text/event-stream')
 

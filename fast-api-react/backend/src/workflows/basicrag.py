@@ -3,13 +3,12 @@ from hatchet_sdk import Context
 from bs4 import BeautifulSoup
 from openai import OpenAI
 import requests
-import time
 
 openai = OpenAI()
 
 
 @hatchet.workflow(on_events=["question:create"])
-class GenerateWorkflow:
+class BasicRagWorkflow:
 
     @hatchet.step()
     def start(self, context: Context):
@@ -87,28 +86,4 @@ class GenerateWorkflow:
             "completed": "true",
             "status": "idle",
             "message": completion.choices[0].message.content,
-        }
-
-@hatchet.workflow()
-class SimpleWorkflow:
-    @hatchet.step()
-    def start(self, ctx: Context):
-        message = ctx.workflow_input()["messages"][-1]
-
-        prompt = ctx.playground("prompt", "The user is asking the following question: {message}")
-
-        prompt = prompt.format(message=message['content'])
-
-        model = ctx.playground("model", "gpt-3.5-turbo")
-
-        completion = openai.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": prompt},
-                message
-            ]
-        )
-
-        return {
-            "answer": completion.choices[0].message.content,
         }

@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     if (!openRequest) return;
 
-    const sse = new EventSource(`${API_URL}/stream/${openRequest}`, {
+    const sse = new EventSource(`${API_URL}/message/${openRequest}`, {
       withCredentials: true,
     });
 
@@ -38,7 +38,7 @@ function App() {
           {
             role: "assistant",
             content: data.payload.message,
-            hatchetRunId: data.workflowRunId,
+            messageId: data.messageId,
           },
         ]);
         setOpenRequest(undefined);
@@ -81,7 +81,7 @@ function App() {
 
       if (response.ok) {
         // Handle successful response
-        setOpenRequest((await response.json()).workflowRunId);
+        setOpenRequest((await response.json()).messageId);
       } else {
         // Handle error response
       }

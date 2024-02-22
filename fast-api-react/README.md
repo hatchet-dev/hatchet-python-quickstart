@@ -28,7 +28,7 @@ OPENAI_API_KEY="<openai-key>"
    poetry install
    ```
 
-## Running the API
+### Running the API
 
 To start the FastAPI server, run the following command in the terminal:
 
@@ -36,7 +36,7 @@ To start the FastAPI server, run the following command in the terminal:
 poetry run api
 ```
 
-## Running the Hatchet Worker
+### Running the Hatchet Worker
 
 In a separate terminal, start the the Hatchet worker by running the following command:
 
@@ -44,11 +44,32 @@ In a separate terminal, start the the Hatchet worker by running the following co
 poetry run hatchet
 ```
 
-## (Optional) Running the Example Frontend Application
+### (Optional) Running the Example Frontend Application
 
 We've included a basic chat engine frontend to play with the example workflow. To run this script:
 
-1. Open a new terminal window and cd into the `fast-api-react/frontend` directory.
+1. Open a new terminal window and cd into the [`./frontend`](./frontend/) directory.
 2. run `npm install`
 3. run `npm start`
 4. By default you can access the application in your browser at `http://localhost:3000` or by following the instructions in the terminal window.
+
+## Project Overview
+
+### Example Workflows
+
+The project contains two example workflows in the [`./backend/src/workflows`](./backend/src/workflows/) directory. These workflows are registered with hatchet in [`./backend/src/workflows/main.py`](./backend/src/workflows/main.py) which is started when running `poetry run hatchet`.
+
+1. [Simple Response Generation](./backend/src/workflows/simple.py): a single step workflow making a request to OpenAI
+2. [Basic Retrieval Augmented Generation](./backend/src/workflows/basicrag.py): a multi-step workflow to load the contents of a website with Beautiful soup, reason about the information, and generate a response with OpenAI.
+
+### Exposing the workflows via a RestAPI
+
+A common design pattern is to start a Hatchet workflow run from a rest api endpoint. In this way, you can handle authentication and authorization as you normally do and let Hatchet handle execution. The simple FastAPI example can be found at [./backend/src/api/main.py](./backend/src/api/main.py)
+
+### Starting a Run
+
+The `POST /message` endpoint initiates a Hatchet workflow run, utilizing the message body as input. Given Hatchet operates asynchronously, this endpoint immediately returns a run ID. This ID acts as a reference for clients to track the status and outcomes of the initiated run.
+
+### Streaming Responses
+
+After initiating a workflow run and receiving a run ID, clients can subscribe to updates through a `GET /message/{id}` request. This request allows clients to receive real-time notifications and results from the asynchronous Hatchet worker, associated with their specific run ID.

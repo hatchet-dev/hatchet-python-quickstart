@@ -1,12 +1,12 @@
 from .hatchet import hatchet
-from .generate import GenerateWorkflow, SimpleWorkflow
+from .basicrag import BasicRagWorkflow
+from .simple import SimpleWorkflow
 
 
 def start():
     worker = hatchet.worker('example-worker')
 
-    generate = GenerateWorkflow()
-    worker.register_workflow(generate)
+    worker.register_workflow(BasicRagWorkflow())
     worker.register_workflow(SimpleWorkflow())
 
     worker.start()
