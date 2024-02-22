@@ -12,10 +12,8 @@ class BasicRagWorkflow:
 
     @hatchet.step()
     def start(self, context: Context):
-        override = context.playground('model', "gpt-3.5-turbo")
-
         return {
-            "status": "reading hatchet docs" + override,
+            "status": "reading hatchet docs",
         }
 
     @hatchet.step(parents=["start"])
