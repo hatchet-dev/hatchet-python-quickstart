@@ -11,7 +11,7 @@ hatchet = "src.main:start"
 [tool.poetry.dependencies]
 python = "^3.8"
 python-dotenv = "^1.0.0"
-hatchet-sdk = "0.10.3"
+hatchet-sdk = "^0.10.4"
 uvicorn = {extras = ["standard"], version = "^0.27.0"}
 fastapi = "^0.109.0"
 beautifulsoup4 = "^4.12.3"
