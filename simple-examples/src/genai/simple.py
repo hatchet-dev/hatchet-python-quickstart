@@ -1,11 +1,12 @@
-from .hatchet import hatchet
+from ..hatchet import hatchet
 from hatchet_sdk import Context
 
 # This is a simple example of a workflow that has 3 steps.
 # The workflow is declared decorated with `@hatchet_workflow` and the steps are declared with `@hatchet_step`.
 
-@hatchet.workflow(on_events=["simple:create"])
-class SimpleWorkflow:
+
+@hatchet.workflow(on_events=["simpleai:create"])
+class SimpleGenAiWorkflow:
 
     @hatchet.step()
     def step1(self, context: Context):
