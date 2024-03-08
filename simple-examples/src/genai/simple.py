@@ -1,4 +1,4 @@
-from ..hatchet import hatchet
+from src.hatchet import hatchet
 from hatchet_sdk import Context
 import openai
 

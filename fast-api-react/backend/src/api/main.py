@@ -17,14 +17,14 @@ hatchet = Hatchet()
 
 
 origins = [
-    "http://localhost:3000",
-    "localhost:3000"
+    "http://localhost:3001",
+    "localhost:3001"
 ]
 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]

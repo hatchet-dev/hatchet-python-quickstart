@@ -14,8 +14,7 @@ python-dotenv = "^1.0.0"
 openai = "^1.12.0"
 beautifulsoup4 = "^4.12.3"
 requests = "^2.31.0"
-urllib3 = "1.26.15"
-hatchet-sdk = "0.10.5"
+hatchet-sdk = "^0.15.0"
 
 [build-system]
 requires = ["poetry-core"]

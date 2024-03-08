@@ -1,4 +1,4 @@
-from ..hatchet import hatchet
+from src.hatchet import hatchet
 
 
 @hatchet.workflow(on_events=["man:create"])

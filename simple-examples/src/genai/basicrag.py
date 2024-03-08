@@ -1,4 +1,4 @@
-from ..hatchet import hatchet
+from src.hatchet import hatchet
 from hatchet_sdk import Context
 from bs4 import BeautifulSoup
 from openai import OpenAI

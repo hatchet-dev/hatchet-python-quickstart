@@ -1,4 +1,4 @@
-from ..hatchet import hatchet
+from src.hatchet import hatchet
 
 workflowRunId = hatchet.client.admin.run_workflow("ManualTriggerWorkflow", {
     "test": "test"
