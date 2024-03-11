@@ -1,4 +1,4 @@
-http://localhost:8080 {
+http://:8080 {
 	handle /api/* {
 		reverse_proxy hatchet-api:8080
 	}
