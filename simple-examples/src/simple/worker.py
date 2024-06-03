@@ -1,9 +1,9 @@
+import asyncio
 from hatchet_sdk import Context
 from src.hatchet import hatchet
 
-
 @hatchet.workflow(on_events=["simple:create"])
-class SimpleWorkflowG:
+class SimpleWorkflow:
 
     @hatchet.step()
     def step1(self, context: Context):
@@ -13,12 +13,7 @@ class SimpleWorkflowG:
         pass
 
     @hatchet.step(parents=["step1"], timeout='4s')
-    def step2(self, context):
+    async def step2(self, context):
         print("started step2")
-        context.sleep(1)
+        await asyncio.sleep(1)
         print("finished step2")
-
-
-worker = hatchet.worker("example-worker-g")
-worker.register_workflow(SimpleWorkflowG())
-worker.start()

@@ -1,10 +1,11 @@
+import os
 from .hatchet import hatchet
 from .simple.worker import SimpleWorkflow
 from .concurrency_limit.worker import ConcurrencyDemoWorkflow
 from .dag.worker import DagWorkflow
 from .manual_trigger.worker import ManualTriggerWorkflow
 from .timeout.worker import TimeoutWorkflow
-
+from .async_workflow.worker import AsyncWorkflow
 
 from .genai.basicrag import BasicRagWorkflow
 from .genai.simple import SimpleGenAiWorkflow
@@ -20,10 +21,12 @@ def start():
     worker.register_workflow(DagWorkflow())
     worker.register_workflow(ManualTriggerWorkflow())
     worker.register_workflow(TimeoutWorkflow())
+    worker.register_workflow(AsyncWorkflow())
 
-    # Generative AI Examples
-    worker.register_workflow(BasicRagWorkflow())
-    worker.register_workflow(SimpleGenAiWorkflow())
+    # Generative AI Examples - only register if OPENAI_API_KEY is set
+    if 'OPENAI_API_KEY' in os.environ:
+        worker.register_workflow(BasicRagWorkflow())
+        worker.register_workflow(SimpleGenAiWorkflow())
 
     # Start the worker and begin listening for events
     worker.start()

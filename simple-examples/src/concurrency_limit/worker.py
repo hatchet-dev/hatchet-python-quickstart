@@ -1,3 +1,4 @@
+import asyncio
 from src.hatchet import hatchet
 
 
@@ -14,7 +15,7 @@ class ConcurrencyDemoWorkflow:
         pass
 
     @hatchet.step(parents=["step1"], timeout='4s')
-    def step2(self, context):
+    async def step2(self, context):
         print("started step2")
-        context.sleep(1)
+        await asyncio.sleep(1)
         print("finished step2")

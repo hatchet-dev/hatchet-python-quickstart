@@ -4,11 +4,10 @@ from bs4 import BeautifulSoup
 from openai import OpenAI
 import requests
 
-openai = OpenAI()
-
-
 @hatchet.workflow(on_events=["question:create"])
 class BasicRagWorkflow:
+    def __init__(self):
+        self.openai = OpenAI()
 
     @hatchet.step()
     def start(self, context: Context):
@@ -19,8 +18,8 @@ class BasicRagWorkflow:
     @hatchet.step(parents=["start"])
     def load_docs(self, context: Context):
         # use beautiful soup to parse the html content
-        url = context.workflow_input()['request']['url']
-
+        url = context.playground("url", "https://docs.hatchet.run/home/basics/workflows")
+                
         html_content = requests.get(url).text
         soup = BeautifulSoup(html_content, 'html.parser')
         element = soup.find('body')
@@ -33,7 +32,7 @@ class BasicRagWorkflow:
 
     @hatchet.step(parents=["load_docs"])
     def reason_docs(self, ctx: Context):
-        message = ctx.workflow_input()['request']["messages"][-1]
+        message = ctx.playground("message", "What are workflows in Hatchet?")
         docs = ctx.step_output("load_docs")['docs']
 
         prompt = ctx.playground("prompt", "The user is asking the following question:\
@@ -41,15 +40,15 @@ class BasicRagWorkflow:
             What are the most relevant sentences in the following document?\
             {docs}")
 
-        prompt = prompt.format(message=message['content'], docs=docs)
+        prompt = prompt.format(message=message, docs=docs)
 
         model = ctx.playground("model", "gpt-3.5-turbo")
 
-        completion = openai.chat.completions.create(
+        completion = self.openai.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": prompt},
-                message
+                {"role": "user", "content": message}
             ]
         )
 
@@ -60,7 +59,7 @@ class BasicRagWorkflow:
 
     @hatchet.step(parents=["reason_docs"])
     def generate_response(self, ctx: Context):
-        messages = ctx.workflow_input()['request']["messages"]
+        message = ctx.playground("message", "What are workflows in Hatchet?")
         research = ctx.step_output("reason_docs")['research']
 
         prompt = ctx.playground("prompt", "You are a sales engineer for a company called Hatchet.\
@@ -73,11 +72,12 @@ class BasicRagWorkflow:
 
         model = ctx.playground("model", "gpt-3.5-turbo")
 
-        completion = openai.chat.completions.create(
+        completion = self.openai.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": prompt},
-            ] + messages
+                {"role": "user", "content": message}
+            ]
         )
 
         return {

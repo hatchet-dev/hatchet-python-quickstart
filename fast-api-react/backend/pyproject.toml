@@ -18,7 +18,7 @@ openai = "^1.11.0"
 beautifulsoup4 = "^4.12.3"
 requests = "^2.31.0"
 urllib3 = "2.2.1"
-hatchet-sdk = "0.20.0"
+hatchet-sdk = "^0.26.0"
 
 [build-system]
 requires = ["poetry-core"]

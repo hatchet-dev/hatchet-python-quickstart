@@ -1,3 +1,4 @@
+import asyncio
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -13,18 +14,19 @@ from .models import MessageRequest
 load_dotenv()
 
 app = FastAPI()
+
 hatchet = Hatchet()
 
 
 origins = [
-    "http://localhost:3001",
-    "localhost:3001"
+    "http://localhost:3000",
+    "localhost:3000"
 ]
 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -32,23 +34,22 @@ app.add_middleware(
 
 
 @app.post("/message")
-def message(data: MessageRequest):
+async def message(data: MessageRequest):
     ''' This endpoint is called by the client to start a message generation workflow. '''
-    messageId = hatchet.client.admin.run_workflow("BasicRagWorkflow", {
+    workflowRun = await hatchet.client.admin.aio.run_workflow("BasicRagWorkflow", {
         "request": data.model_dump()
     })
 
-    # normally, we'd save the workflowRunId to a database and return a reference to the client
-    # for this simple example, we just return the workflowRunId
+    # normally, we'd save the workflow_run_id to a database and return a reference to the client
+    # for this simple example, we just return the workflow_run_id
 
-    return {"messageId": messageId}
+    return {"messageId": workflowRun.workflow_run_id}
 
-
-def event_stream_generator(workflowRunId):
+async def event_stream_generator(workflowRunId):
     ''' This helper function is a generator that yields events from the Hatchet event stream. '''
-    stream = hatchet.client.listener.stream(workflowRunId)
+    workflowRun = hatchet.client.admin.get_workflow_run(workflowRunId)
 
-    for event in stream:
+    async for event in workflowRun.stream():
         ''' you can filter and transform event data here that will be sent to the client'''
         data = json.dumps({
             "type": event.type,
@@ -57,6 +58,15 @@ def event_stream_generator(workflowRunId):
         })
         yield "data: " + data + "\n\n"
 
+    result = await workflowRun.result()
+
+    data = json.dumps({
+        "type": "result",
+        "payload": result,
+        "messageId": workflowRunId
+    })
+
+    yield "data: " + data + "\n\n"
 
 @app.get("/message/{messageId}")
 async def stream(messageId: str):
