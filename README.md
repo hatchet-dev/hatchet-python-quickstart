@@ -46,5 +46,5 @@ This repository includes two example projects:
 1. [fast-api and react](/fast-api-react): a full stack demo OpenAi chat application
 2. [simple-examples](/simple-examples): stand-alone workers showing off core functionality of hatchet
 
-To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/home/python-sdk/setup)
+To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/sdks/python-sdk/setup)
 

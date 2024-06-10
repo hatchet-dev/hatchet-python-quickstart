@@ -93,15 +93,11 @@ services:
         condition: service_completed_successfully
       migration:
         condition: service_completed_successfully
-    env_file:
-      - .env.server
     environment:
-      SERVER_GRPC_BROADCAST_ADDRESS: hatchet-engine:7070
       DATABASE_URL: "postgres://hatchet:hatchet@postgres:5432/hatchet"
     volumes:
       - hatchet_certs:/hatchet/certs
       - hatchet_config:/hatchet/config
-      - ./github.pem:/hatchet/github/github.pem # This line mounts your optional github pem
   hatchet-frontend:
     image: ghcr.io/hatchet-dev/hatchet/hatchet-frontend:latest
   caddy:
@@ -110,7 +106,7 @@ services:
       - 8080:8080
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-
+ 
 volumes:
   hatchet_postgres_data:
   hatchet_rabbitmq_data:
