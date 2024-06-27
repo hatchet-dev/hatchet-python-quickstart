@@ -20,4 +20,4 @@ COPY . /app
 RUN poetry config virtualenvs.in-project true && \
     poetry install
 
-ENTRYPOINT ["poetry", "run", "hatchet"]
+ENTRYPOINT ["poetry", "run", "python3", "./src/demo/worker.py"]
