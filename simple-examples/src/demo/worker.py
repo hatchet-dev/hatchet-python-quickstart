@@ -83,4 +83,6 @@ workflow = ExampleDagWorkflow()
 worker = hatchet.worker("demo-worker")
 worker.register_workflow(workflow)
 
+logger.info("Starting demo worker")
+
 worker.start()
