@@ -1,0 +1,18 @@
+[project]
+name = "django-hatchet"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "mrkaye97",email = "mrkaye97@gmail.com"}
+]
+readme = "README.md"
+requires-python = "^3.13"
+dependencies = [
+    "hatchet-sdk (>=0.44.2,<0.45.0)",
+    "django (>=5.1.5,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
