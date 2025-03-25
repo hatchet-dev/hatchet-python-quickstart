@@ -2,7 +2,6 @@
 
 This is an example project demonstrating how to use Hatchet with Python.
 
-
 ## Prerequisites
 
 Before running this project, make sure you have the following:
@@ -28,13 +27,13 @@ export HATCHET_CLIENT_TOKEN=<token>
 1. Start a Hatchet worker by running the following command:
 
 ```shell
-poetry run python -m hatchet.worker
+poetry run python src/worker.py
 ```
 
 2. To run the example workflow, open a new terminal and run the following command:
 
 ```shell
-poetry run python -m hatchet.run
+poetry run python src/run.py
 ```
 
 This will trigger the workflow on the worker running in the first terminal and print the output to the the second terminal.
