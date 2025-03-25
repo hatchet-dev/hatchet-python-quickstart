@@ -1,50 +1,40 @@
-## Hatchet Python Quickstart
+# Hatchet Simple Examples
 
-The following is a template repo to get started with the Hatchet Python SDK. It includes instructions for getting started with Hatchet cloud along with a locally running instance of Hatchet.
+This is an example project demonstrating how to use Hatchet with Python.
 
-### Cloud Version
 
-Navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
+## Prerequisites
 
-```
-HATCHET_CLIENT_TOKEN="<token>"
-```
+Before running this project, make sure you have the following:
 
-You will need this in the examples.
+1. [Python V3.10 or higher](https://www.python.org/downloads/)
 
-**Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
+## Setup
 
-### Local Version
-
-Run the following command to start the Hatchet instance:
+1. Set the required environment variable `HATCHET_CLIENT_TOKEN` created in the [Getting Started Guide](https://docs.hatchet.run/home/hatchet-cloud-quickstart).
 
 ```
-docker compose up
+export HATCHET_CLIENT_TOKEN=<token>
 ```
 
-This will start a Hatchet instance on port `8080`. You should be able to navigate to [localhost:8080](localhost:8080) and use the following credentials to log in:
+2. Run the following command to install the project dependencies:
 
+   ```shell
+   poetry install
+   ```
+
+### Running an example
+
+1. Start a Hatchet worker by running the following command:
+
+```shell
+poetry run python -m hatchet.worker
 ```
-Email: admin@example.com
-Password: Admin123!!
+
+2. To run the example workflow, open a new terminal and run the following command:
+
+```shell
+poetry run python -m hatchet.run
 ```
 
-Next, navigate to your settings tab in the Hatchet dashboard. You should see a section called "API Keys". Click "Create API Key", input a name for the key and copy the key. Then copy the environment variable:
-
-```
-HATCHET_CLIENT_TOKEN="<token>"
-```
-
-You will need this in the examples.
-
-**Next steps:** see [Running Workflows](#running-workflows) to trigger your first Hatchet workflow.
-
-## Running Workflows
-
-This repository includes two example projects:
-
-1. [fast-api and react](/fast-api-react): a full stack demo OpenAi chat application
-2. [simple-examples](/simple-examples): stand-alone workers showing off core functionality of hatchet
-
-To get started, navigate to the respective example directories for further README instructions and refer to the [Documentation](https://docs.hatchet.run/home/python-sdk/setup)
-
+This will trigger the workflow on the worker running in the first terminal and print the output to the the second terminal.
