@@ -1,10 +1,11 @@
-from hatchet_sdk import Context, EmptyModel, Hatchet
-from ..hatchet_client import hatchet
+from hatchet_sdk import Context, EmptyModel
 
-# Define the workflow
-simple = hatchet.workflow(name="first-workflow")
+from hatchet_client import hatchet
+
 
 # Declare the task to run
-@simple.task()
-def step1(input: EmptyModel, ctx: Context) -> None:
-    print("executed step1")
+@hatchet.task(name="first-workflow")
+def my_task(input: EmptyModel, ctx: Context) -> dict[str, int]:
+    print("executed task")
+
+    return {"meaning_of_life": 42}
