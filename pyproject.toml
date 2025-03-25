@@ -8,7 +8,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-hatchet-sdk = "^0.47.1-alpha"
+hatchet-sdk = "1.0.0a1"
 
 
 [build-system]
