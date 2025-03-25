@@ -1,4 +1,4 @@
-# Hatchet Simple Examples
+# Hatchet First Workflow Example
 
 This is an example project demonstrating how to use Hatchet with Python.
 
