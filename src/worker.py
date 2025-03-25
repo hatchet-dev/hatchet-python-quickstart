@@ -1,5 +1,5 @@
 from hatchet_client import hatchet
-from workflows.simple import simple
+from workflows.first_workflow import simple
 
 def main() -> None:
     worker = hatchet.worker(

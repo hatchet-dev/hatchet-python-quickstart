@@ -2,7 +2,7 @@ from hatchet_sdk import Context, EmptyModel, Hatchet
 from ..hatchet_client import hatchet
 
 # Define the workflow
-simple = hatchet.workflow(name="SimpleWorkflow")
+simple = hatchet.workflow(name="first-workflow")
 
 # Declare the task to run
 @simple.task()
