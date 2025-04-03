@@ -1,26 +1,36 @@
-# Hatchet First Workflow Example
+## Hatchet Python Quickstart
 
-This is an example project demonstrating how to use Hatchet with Python.
+This is an example project demonstrating how to use Hatchet with Python. For detailed setup instructions, see the [Hatchet Setup Guide](https://docs.hatchet.run/home/setup).
 
 ## Prerequisites
 
 Before running this project, make sure you have the following:
 
-1. [Python V3.10 or higher](https://www.python.org/downloads/)
+1. [Python v3.10 or higher](https://www.python.org/downloads/)
+2. [Poetry](https://python-poetry.org/docs/#installation) for dependency management
 
 ## Setup
 
-1. Set the required environment variable `HATCHET_CLIENT_TOKEN` created in the [Getting Started Guide](https://docs.hatchet.run/home/hatchet-cloud-quickstart).
+1. Clone the repository:
 
+```bash
+git clone https://github.com/hatchet-dev/hatchet-python-quickstart.git
+cd hatchet-python-quickstart
 ```
+
+2. Set the required environment variable `HATCHET_CLIENT_TOKEN` created in the [Getting Started Guide](https://docs.hatchet.run/home/hatchet-cloud-quickstart).
+
+```bash
 export HATCHET_CLIENT_TOKEN=<token>
 ```
 
-2. Run the following command to install the project dependencies:
+> Note: If you're self hosting you may need to set `HATCHET_CLIENT_TLS_STRATEGY=none` to disable TLS
 
-   ```shell
-   poetry install
-   ```
+3. Install the project dependencies:
+
+```bash
+poetry install
+```
 
 ### Running an example
 
