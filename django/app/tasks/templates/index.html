@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hatchet Workflow Trigger</title>
+</head>
+<body>
+    <form id="workflowForm" method="POST">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="Enter message">
+        <button type="submit">Trigger Workflow</button>
+    </form>
+
+    <script>
+        document.getElementById('workflowForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            fetch('/tasks/trigger-workflow/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Workflow triggered! ID: ${data.workflow_id}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
