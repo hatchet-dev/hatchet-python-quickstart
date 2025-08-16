@@ -1,6 +1,6 @@
 import asyncio
 
-from workflows.first_workflow import my_task
+from app.workflows.first_workflow import my_task
 
 
 async def main() -> None:

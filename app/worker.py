@@ -1,5 +1,5 @@
-from hatchet_client import hatchet
-from workflows.first_workflow import my_task
+from app.hatchet_client import hatchet
+from app.workflows.first_workflow import my_task
 
 
 def main() -> None:
