@@ -10,7 +10,4 @@ COPY app ./app
 
 RUN uv sync --frozen
 
-
-
-# Run the worker
-CMD ["uv", "run", "python", "-m", "app.worker"]
+CMD ["uv", "run", "app/worker.py"]
