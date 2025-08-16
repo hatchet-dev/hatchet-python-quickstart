@@ -1,6 +1,6 @@
 from hatchet_sdk import Context, EmptyModel
 
-from hatchet_client import hatchet
+from app.hatchet_client import hatchet
 
 
 # Declare the task to run

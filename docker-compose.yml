@@ -1,0 +1,8 @@
+# Infra for Hatchet: https://docs.hatchet.run/self-hosting/docker-compose
+services:
+  hatchet-worker-example:
+    env_file:
+      - .env
+    build: .
+    environment:
+      HATCHET_CLIENT_TOKEN: ${HATCHET_CLIENT_TOKEN}

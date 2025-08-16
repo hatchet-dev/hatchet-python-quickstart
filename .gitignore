@@ -1,24 +1,4 @@
-certs/
+.venv
+__pycache__
 
-# Environments
 .env
-env/
-venv/
-.venv/
-__pycache__/
-*.py[cod]
-*$py.class
-.Python
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-*.egg
-
-.DS_Store
-
-index/index.json
