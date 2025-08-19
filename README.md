@@ -55,3 +55,16 @@ uv run python -m app.worker
 or visit your hatchet dashboard and trigger the workflow manually
 
 This will trigger the workflow on the worker running in the first terminal and print the output to the the second terminal.
+
+# Deploy to Coolify
+
+- Connect your repository via the GitHub app: https://coolify.io/docs/knowledge-base/git/github/integration, choose Docker Compose for building your app(`docker-compose.yml`).
+- generate a domain for your dashboard
+- from the dashboard, create a new api key
+- copy your key as HATCHET_CLIENT_TOKEN to env and redeploy the stack.
+- to confirm, trigger a workflow from the dashboard.
+
+## How to Contribute
+
+- Have an idea for improvement? Feel free to open a PR!
+- There's also [draft pr](https://github.com/coollabsio/coolify/pull/6313) to add hatchet as a service template to coolify. As I see it, to complete this, it would require running the worker in a different stack and [allowing it to connect to predifened network](https://coolify.io/docs/builds/packs/docker-compose#connect-to-predefined-networks).
