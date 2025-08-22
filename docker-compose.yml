@@ -128,7 +128,7 @@ services:
     environment:
       HATCHET_CLIENT_TOKEN: ${HATCHET_CLIENT_TOKEN}
       HATCHET_CLIENT_TLS_STRATEGY: ${HATCHET_CLIENT_TLS_STRATEGY-none}
-      HATCHET_CLIENT_HOST_PORT: hatchet-engine:7070
+      HATCHET_CLIENT_HOST_PORT: ${HATCHET_CLIENT_HOST_PORT}
     depends_on:
       hatchet-engine:
         condition: service_started

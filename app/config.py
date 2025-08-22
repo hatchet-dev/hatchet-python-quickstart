@@ -9,7 +9,7 @@ class Settings(BaseSettings):
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
     HATCHET_CLIENT_TOKEN: str
-    HATCHET_CLIENT_HOST_PORT: Optional[str] = None
+    HATCHET_CLIENT_HOST_PORT: str = "hatchet-engine:7070"
 
 
 settings = Settings()  # type: ignore
