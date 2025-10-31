@@ -3,7 +3,7 @@ from workflows.first_workflow import my_task
 
 
 def main() -> None:
-    worker = hatchet.worker("test-worker", slots=1, workflows=[my_task])
+    worker = hatchet.worker("test-worker", workflows=[my_task])
     worker.start()
 
 
